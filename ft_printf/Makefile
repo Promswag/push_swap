@@ -6,7 +6,7 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 13:33:16 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/03/23 18:34:57 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/10/04 14:06:52 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJS			= ${SRC:%.c=${OUT_DIR}%.o}
 
 AR				= ar rc
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -I${INCLUDE_DIR}
+CFLAGS			= -Wall -Wextra -Werror -I${INCLUDE_DIR} -g -fsanitize=address
 RM				= rm -f
 
 all: ${NAME}

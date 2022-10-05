@@ -6,7 +6,7 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/21 10:13:56 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/10/04 12:36:37 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/10/04 14:06:44 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC		=	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strle
 OBJS	= ${SRC:%.c=%.o}
 
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g -fsanitize=address
 
 all: ${NAME}
 
@@ -31,7 +31,7 @@ ${NAME}: ${OBJS}
 	ar rc ${NAME} ${OBJS}
 
 clean:
-	rm -f ${OBJS} ${BOBJS}
+	rm -f ${OBJS}
 
 fclean: clean
 	rm -f ${NAME}

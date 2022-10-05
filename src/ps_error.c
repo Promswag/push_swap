@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   ps_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/22 15:48:54 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/02/28 14:07:19 by gbaumgar         ###   ########.fr       */
+/*   Created: 2022/10/05 18:16:36 by gbaumgar          #+#    #+#             */
+/*   Updated: 2022/10/05 19:31:13 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ps_error_handler(int errno)
 {
-	if (*lst == NULL)
-		*lst = new;
-	else
-		ft_lstlast(*lst)->next = new;
+	ft_putstr_fd("Error\n", 2);
+	if (errno == 0)
+		ft_putstr_fd("Too few arguments.\n", 2);
+	if (errno == 1)
+		ft_putstr_fd("Arguments must be numbers.\n", 2);
+	if (errno == 2)
+		ft_putstr_fd("Arguments must fit in an INT.\n", 2);
+	return (-1);
 }
