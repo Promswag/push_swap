@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:56:13 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 13:37:32 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:13:48 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,20 @@ int	ps_list_is_sorted(t_list *list)
 	while (list->next)
 	{
 		if (ft_atoi(list->content) < ft_atoi(list->next->content))
+			list = list->next;
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	ps_list_is_sorted_int(t_list *list)
+{
+	if (!list)
+		return (0);
+	while (list->next)
+	{
+		if (list->content < list->next->content)
 			list = list->next;
 		else
 			return (0);

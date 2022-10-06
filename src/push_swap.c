@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:13:28 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 14:36:26 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 19:57:38 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int	main(int argc, char **argv)
 	if (ps_load_index_list(a, &index))
 		return (-1);
 	ps_update_index(a, &index);
-	ps_sort(index, b);
-	ps_print(a, index);
+	if (ft_lstsize(index) > 10)
+		ps_sort(&index, &b);
+	else if (ft_lstsize(index) > 3)
+		ps_sort_med(&index, &b);
+	else
+		ps_sort_small(&index);
 	return (0);
 }

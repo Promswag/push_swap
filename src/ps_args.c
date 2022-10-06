@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:39:52 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 12:55:06 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 18:22:35 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ps_args_handler(int argc, char **argv, t_list **list)
 
 	offset = 1;
 	if (argc == 1)
-		return (ps_error_handler(0));
+		return (0);
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');

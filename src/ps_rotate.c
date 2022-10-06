@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:37:44 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 12:39:12 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:50:30 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,18 @@ void	ps_rotate(t_list **list)
 void	ps_ra(t_list **a)
 {
 	ps_rotate(a);
+	ft_printf("ra\n");
 }
 
 void	ps_rb(t_list **b)
 {
 	ps_rotate(b);
+	ft_printf("rb\n");
 }
 
 void	ps_rr(t_list **a, t_list **b)
 {
 	ps_rotate(a);
 	ps_rotate(b);
+	ft_printf("rr\n");
 }

@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:29:01 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 12:32:21 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:50:49 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,18 @@ void	ps_swap(t_list **list)
 void	ps_sa(t_list **a)
 {
 	ps_swap(a);
+	ft_printf("sa\n");
 }
 
 void	ps_sb(t_list **b)
 {
 	ps_swap(b);
+	ft_printf("sb\n");
 }
 
 void	ps_ss(t_list **a, t_list **b)
 {
 	ps_swap(a);
 	ps_swap(b);
+	ft_printf("ss\n");
 }
