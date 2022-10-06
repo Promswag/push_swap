@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ps_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 13:13:28 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 14:36:26 by gbaumgar         ###   ########.fr       */
+/*   Created: 2022/10/06 12:33:09 by gbaumgar          #+#    #+#             */
+/*   Updated: 2022/10/06 12:34:33 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	ps_push(t_list **src, t_list **dst)
 {
-	t_list	*a;
-	t_list	*b;
-	t_list	*index;
+	t_list	*tmp;
 
-	a = NULL;
-	b = NULL;
-	index = NULL;
-	if (ps_args_handler(argc, argv, &a))
-		return (-1);
-	if (ps_list_is_sorted(a))
-		return (0);
-	if (ps_load_index_list(a, &index))
-		return (-1);
-	ps_update_index(a, &index);
-	ps_sort(index, b);
-	ps_print(a, index);
-	return (0);
+	if (*src)
+	{
+		tmp = (*src)->next;
+		(*src)->next = *dst;
+		*dst = *src;
+		*src = tmp;
+	}
+}
+
+void	ps_pa(t_list **a, t_list **b)
+{
+	ps_push(a, b);
+}
+
+void	ps_pb(t_list **a, t_list **b)
+{
+	ps_push(b, a);
 }

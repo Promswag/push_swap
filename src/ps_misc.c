@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:56:13 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/05 19:20:03 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:37:32 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ps_print(t_list *a, t_list *b)
 				ft_printf("  ");
 			if (b)
 			{
-				ft_printf("%s\n", b->content);
+				ft_printf("%d\n", b->content);
 				b = b->next;
 			}
 			else

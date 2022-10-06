@@ -6,66 +6,60 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:34:48 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/04 17:34:56 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 13:42:35 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ps_swap(t_list **list)
+int	ps_update_index(t_list *list, t_list **index)
 {
-	t_list	*tmp;
+	t_list	*read;
+	t_list	*chk;
+	t_list	*set;
 
-	if (*list)
-	{
-		if ((*list)->next)
+	if (!list || !index || !*index)
+		return (-1);
+	read = list;
+	while (read)
+	{	
+		chk = list;
+		set = *index;
+		while (chk && set)
 		{
-			tmp = (*list)->next;
-			(*list)->next = tmp->next;
-			tmp->next = *list;
-			*list = tmp;
+			if (ft_atoi(read->content) < ft_atoi(chk->content))
+				set->content++;
+			chk = chk->next;
+			set = set->next;
+		}
+		read = read->next;
+	}
+	return (0);
+}
+
+int	ps_load_index_list(t_list *list, t_list **index)
+{
+	int		size;
+	t_list	*elem;
+
+	if (!list)
+		return (-1);
+	size = ft_lstsize(list);
+	while (size--)
+	{
+		elem = ft_lstnew(0);
+		if (elem)
+		{
+			if (!*index)
+				*index = elem;
+			else
+				ft_lstadd_front(index, elem);
+		}
+		else
+		{
+			ft_lstclear(index, NULL);
+			return (ps_error_handler(4));
 		}
 	}
-}
-
-void	ps_push(t_list **src, t_list **dst)
-{
-	t_list	*tmp;
-
-	if (*src)
-	{
-		tmp = (*src)->next;
-		(*src)->next = *dst;
-		*dst = *src;
-		*src = tmp;
-	}
-}
-
-void	ps_rotate(t_list **list)
-{
-	t_list	*tmp;
-
-	if (*list)
-	{
-		tmp = (*list)->next;
-		ft_lstlast(*list)->next = *list;
-		(*list)->next = NULL;
-		*list = tmp;
-	}
-}
-
-void	ps_reverse(t_list **list)
-{
-	t_list	*tmp;
-
-	if (*list)
-	{
-		tmp = *list;
-		if (tmp->next)
-			while (tmp->next->next)
-				tmp = tmp->next;
-		tmp->next->next = *list;
-		*list = tmp->next;
-		tmp->next = NULL;
-	}
+	return (0);
 }

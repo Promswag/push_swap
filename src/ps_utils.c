@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 19:19:04 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/05 19:20:01 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/06 11:57:23 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int	ft_isanumber(char *str)
 {
+	int	i;
 	int	l;
 
 	if (!str)
 		return (0);
+	i = 0;
 	l = ft_strlen(str);
-	while (l--)
-		if (!ft_isdigit(str[l]))
+	if ((str[i] == '-' || str[i] == '+') && l == 1)
+		return (0);
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (i < l)
+		if (!ft_isdigit(str[i++]))
 			return (0);
 	return (1);
 }

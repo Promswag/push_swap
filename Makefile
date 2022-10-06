@@ -6,7 +6,7 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 14:35:47 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/10/05 19:19:28 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/10/06 13:09:36 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ INCLUDE_DIR		= ./include/
 SRC_DIR			= ./src/
 OUT_DIR			= ./
 
-SRC				= 	push_swap.c ps_op.c ps_misc.c ps_sort.c ps_args.c ps_error.c ps_utils.c
+SRC				= 	push_swap.c ps_args.c ps_error.c ps_op.c\
+					ps_swap.c ps_push.c ps_rotate.c ps_reverse.c\
+					ps_misc.c ps_sort.c  ps_utils.c
 OBJS			= ${SRC:%.c=${OUT_DIR}%.o}
 
 INCLUDE			= -I${INCLUDE_DIR}	
