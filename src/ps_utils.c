@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 19:19:04 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 11:57:23 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:02:23 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,27 @@ int	int32_overflow_check(const char *str)
 		i++;
 	}
 	return (0);
+}
+
+char	*ft_tab_strjoin(char **tab, char *sep)
+{
+	char	*str;
+	char	*tmp;
+	int		i;
+
+	i = -1;
+	str = malloc(sizeof(char) * 1);
+	if (!str)
+		return (NULL);
+	str[0] = '\0';
+	while (tab[++i])
+	{
+		tmp = str;
+		str = ft_strjoin(str, tab[i]);
+		free(tmp);
+		tmp = str;
+		str = ft_strjoin(str, sep);
+		free (tmp);
+	}
+	return (str);
 }

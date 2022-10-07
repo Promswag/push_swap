@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:34:48 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 13:42:35 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:09:22 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,22 @@ int	ps_load_index_list(t_list *list, t_list **index)
 			return (ps_error_handler(4));
 		}
 	}
+	return (0);
+}
+
+int	ps_clear(t_list **a, t_list **b, t_list **c, char **argv)
+{
+	int	i;
+
+	i = -1;
+	if (a && *a)
+		ft_lstclear(a, NULL);
+	if (b && *b)
+		ft_lstclear(b, NULL);
+	if (c && *c)
+		ft_lstclear(c, NULL);
+	while (argv[++i])
+		free(argv[i]);
+	free(argv);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 14:35:47 by gbaumgar          #+#    #+#              #
-#    Updated: 2022/10/06 13:09:36 by gbaumgar         ###   ########.fr        #
+#    Updated: 2022/10/07 14:47:58 by gbaumgar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIB_FT			= -L libft -lft
 LIB_PRINTF		= -L ft_printf -lftprintf
 
 CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS			= -Wall -Wextra -Werror -g
 RM				= rm -f
 
 all: ${NAME}

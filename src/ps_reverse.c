@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 12:40:55 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 20:33:43 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 11:43:20 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ void	ps_reverse(t_list **list)
 		if (prev)
 		{
 			prev->next = NULL;
-			cur->next = (*list)->next;
+			cur->next = *list;
 			*list = cur;
 		}
-		// if (tmp->next)
-		// 	tmp->next->next = *list;
-		// *list = tmp->next;
-		// tmp->next = NULL;
 	}
 }
 

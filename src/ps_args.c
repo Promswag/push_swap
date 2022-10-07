@@ -6,38 +6,38 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:39:52 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 18:22:35 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:09:21 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ps_args_handler(int argc, char **argv, t_list **list)
+char	**ps_args_handler(int argc, char **argv, t_list **list)
 {
-	int	offset;
+	char	*str;
+	char	**args;
 
-	offset = 1;
 	if (argc == 1)
-		return (0);
-	if (argc == 2)
+		return (NULL);
+	else if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
 	{
-		argv = ft_split(argv[1], ' ');
-		argc = ft_tabsize(argv);
-		offset--;
+		str = ft_tab_strjoin(argv + 1, " ");
+		args = ft_split(str, ' ');
+		if (str)
+			free(str);
 	}
-	if (ps_number_check(argc, argv, offset))
-		return (ps_error_handler(1));
-	if (ps_overflow_check(argc, argv, offset))
-		return (ps_error_handler(2));
-	if (ps_duplicate_check(argc, argv, offset))
-		return (ps_error_handler(3));
-	ps_load_stack(argc, argv, offset, list);
-	return (0);
+	argc = ft_tabsize(args);
+	if (ps_number_check(argc, args) || ps_overflow_check(argc, args) || \
+		ps_duplicate_check(argc, args) || ps_load_stack(argc, args, list))
+		return (NULL);
+	return (args);
 }
 
-int	ps_number_check(int argc, char **argv, int offset)
+int	ps_number_check(int argc, char **argv)
 {
-	while (argc-- - offset)
+	while (argc--)
 	{
 		if (!ft_isanumber(argv[argc]))
 			return (1);
@@ -45,9 +45,9 @@ int	ps_number_check(int argc, char **argv, int offset)
 	return (0);
 }
 
-int	ps_overflow_check(int argc, char **argv, int offset)
+int	ps_overflow_check(int argc, char **argv)
 {
-	while (argc-- - offset)
+	while (argc--)
 	{
 		if (int32_overflow_check(argv[argc]))
 			return (1);
@@ -55,25 +55,25 @@ int	ps_overflow_check(int argc, char **argv, int offset)
 	return (0);
 }
 
-int	ps_duplicate_check(int argc, char **argv, int offset)
+int	ps_duplicate_check(int argc, char **argv)
 {
 	int	i;
 
-	while (argc-- - offset)
+	while (argc--)
 	{
 		i = argc;
-		while (i-- - offset)
+		while (i--)
 			if (ft_atoi(argv[argc]) == ft_atoi(argv[i]))
 				return (1);
 	}
 	return (0);
 }
 
-int	ps_load_stack(int argc, char **argv, int offset, t_list **list)
+int	ps_load_stack(int argc, char **argv, t_list **list)
 {
 	t_list	*elem;
 
-	while (argc-- - offset)
+	while (argc--)
 	{
 		elem = ft_lstnew((argv[argc]));
 		if (elem)
@@ -86,7 +86,7 @@ int	ps_load_stack(int argc, char **argv, int offset, t_list **list)
 		else
 		{
 			ft_lstclear(list, NULL);
-			return (ps_error_handler(4));
+			return (-1);
 		}
 	}
 	return (0);
