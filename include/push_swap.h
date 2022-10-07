@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 13:14:19 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/07 15:07:21 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:36:58 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		ps_error_handler(int errno);
 int		ps_list_is_sorted(t_list *list);
 int		ps_list_is_sorted_int(t_list *list);
 void	ps_print(t_list *a, t_list *b);
+int		ps_last_sorted_index(t_list *list);
 
 //	ps_op.c
 int		ps_load_index_list(t_list *list, t_list **index);
@@ -42,7 +43,7 @@ int		ps_clear(t_list **a, t_list **b, t_list **c, char **argv);
 int		ps_get_leftmostbit(t_list *list);
 void	ps_sort(t_list **a, t_list **b);
 int		ps_sort2(int bit, t_list **a, t_list **b);
-void	ps_sort_small(t_list **a);
+void	ps_sort_small(t_list **a, t_list **b);
 void	ps_sort_med(t_list **a, t_list **b);
 
 //	ps_swap.c

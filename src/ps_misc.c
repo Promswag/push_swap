@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:56:13 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/06 15:13:48 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:33:46 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,20 @@ void	ps_print(t_list *a, t_list *b)
 		}
 		ft_printf("- -\na b\n");
 	}
+}
+
+int	ps_last_sorted_index(t_list *list)
+{
+	int	i;
+
+	i = 0;
+	while (list->next)
+	{
+		if (list->content < list->next->content)
+			list = list->next;
+		else
+			return (i);
+		i++;
+	}
+	return (i);
 }

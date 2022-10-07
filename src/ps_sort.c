@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:36:01 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/07 14:46:48 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:38:23 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ps_sort(t_list **a, t_list **b)
 
 	leftmostbit = ps_get_leftmostbit(*a);
 	bit = 0;
-	while (bit < leftmostbit + 1 && !ps_list_is_sorted_int(*a))
+	while (bit < leftmostbit + 1)
 		bit = ps_sort2(bit, a, b);
 	while (*b)
 		ps_pa(a, b);
@@ -68,8 +68,10 @@ int	ps_sort2(int bit, t_list **a, t_list **b)
 	return (bit);
 }
 
-void	ps_sort_small(t_list **a)
+void	ps_sort_small(t_list **a, t_list **b)
 {
+	while (ft_lstsize(*a) > 3)
+		ps_pb(a, b);
 	if (a)
 	{
 		while (*a)
@@ -86,28 +88,28 @@ void	ps_sort_small(t_list **a)
 
 void	ps_sort_med(t_list **a, t_list **b)
 {
-	if (a)
+	ps_sort_small(a, b);
+	while (*b)
 	{
-		while (ft_lstsize(*a) > 3)
-			ps_pb(a, b);
-		ps_sort_small(a);
-		while (*b)
-		{
-			if (((*b)->content < (*a)->content && (*b)->content > \
+		if (((*b)->content < (*a)->content && (*b)->content > \
 	ft_lstlast(*a)->content) || (ps_list_is_sorted_int(*a) \
 	&& (*b)->content > ft_lstlast(*a)->content) \
 	|| (ps_list_is_sorted_int(*a) && (*b)->content < (*a)->content))
-				ps_pa(a, b);
-			else if ((*b)->next && (((*b)->next->content < (*a)->content && \
+			ps_pa(a, b);
+		else if ((*b)->next && (((*b)->next->content < (*a)->content && \
 	(*b)->next->content > ft_lstlast(*a)->content) || \
 	(ps_list_is_sorted_int(*a) && (*b)->next->content > \
 	ft_lstlast(*a)->content) || (ps_list_is_sorted_int(*a) && \
 	(*b)->next->content < (*a)->content)))
-				ps_rb(b);
-			else
-				ps_ra(a);
-		}
-		while ((*a)->content > ft_lstlast(*a)->content)
-			ps_rra(a);
+			ps_rb(b);
+		else
+			ps_ra(a);
 	}
+	while (!ps_list_is_sorted_int(*a))
+	{
+		if (ps_last_sorted_index(*a) < 2)
+			ps_ra(a);
+		else
+			ps_rra(a);
+	}	
 }
