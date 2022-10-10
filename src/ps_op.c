@@ -6,7 +6,7 @@
 /*   By: gbaumgar <gbaumgar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:34:48 by gbaumgar          #+#    #+#             */
-/*   Updated: 2022/10/07 15:09:22 by gbaumgar         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:28:50 by gbaumgar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,11 @@ int	ps_clear(t_list **a, t_list **b, t_list **c, char **argv)
 		ft_lstclear(b, NULL);
 	if (c && *c)
 		ft_lstclear(c, NULL);
-	while (argv[++i])
-		free(argv[i]);
-	free(argv);
+	if (argv)
+	{
+		while (argv[++i])
+			free(argv[i]);
+		free(argv);
+	}
 	return (0);
 }
